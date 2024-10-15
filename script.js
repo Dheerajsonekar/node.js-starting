@@ -45,13 +45,35 @@
 // printD();
 
 
+// const http = require('http');
+
+// const server = http.createServer((req, res)=>{
+//   console.log(req);
+//   res.end('successfull');
+// })
+
+// server.listen(4000, ()=>{
+//   console.log(" Hello Dheeraj sonekar! Server is running on the port 4000.");
+// })
+
 const http = require('http');
 
-const server = http.createServer((req, res)=>{
-  console.log(req);
-  res.end('successfull');
+const server = http.createServer((req,res)=>{
+  res.setHeader('Content-Type', 'text/plain');
+  
+  if(req.url=='/home'){
+    res.write('Welcome to home')
+  }
+  else if(req.url=='/About'){
+    res.write('Welcome to About us page')
+  }
+  else if(req.url=='/node'){
+    res.write('Welcome to my nodejs project')
+  }
+  else {
+    res.write('Welocome to this project')
+  }
+  res.end();
 })
 
-server.listen(4000, ()=>{
-  console.log(" Hello Dheeraj sonekar! Server is running on the port 4000.");
-})
+server.listen(3000);
