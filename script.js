@@ -88,7 +88,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 
 app.use('/add-product', (req, res, next)=>{
-  res.send('<form action="/product" method="POST"><input type="text" name="title"><button type="submit">Add Product</button></form>');
+  res.send('<form action="/product" method="POST"><input type="text" name="title" placeholder="enter product name"><input type="text" name="size" placeholder="enter size"><button type="submit">Add Product</button></form>');
   
 })
 
