@@ -76,32 +76,27 @@
 
 // server.listen(3000);
 
-const http = require("http");
-const express = require('express');
+
+const express = require("express");
 const app = express();
 
-const bodyParser = require('body-parser');
+const bodyParser = require("body-parser");
 
 const PORT = 8000;
 
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({ extended: true }));
+
+const adminRouter = require("./routes/admin.js");
+const shopRouter = require("./routes/shop.js");
 
 
-app.use('/add-product', (req, res, next)=>{
-  res.send('<form action="/product" method="POST"><input type="text" name="title" placeholder="enter product name"><input type="text" name="size" placeholder="enter size"><button type="submit">Add Product</button></form>');
-  
-})
 
-app.use('/product', (req, res, next)=>{
-  console.log(req.body);
-  res.redirect('/');
-})
+app.use('/admin', adminRouter);
+app.use(shopRouter);
 
 app.use('/', (req, res, next)=>{
-  res.send('<h1>Welcome to Expresjs project</h1>');
-  
+  res.sendStatus(404);
 })
-
 app.listen(PORT, () => {
   console.log("Server is running on " + PORT + ".");
 });
