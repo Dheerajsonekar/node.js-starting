@@ -76,26 +76,26 @@
 
 // server.listen(3000);
 
-
+const path = require("path");
 const express = require("express");
 const app = express();
 
 const bodyParser = require("body-parser");
 
-const PORT = 8000;
+const PORT = 3000;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
 const adminRouter = require("./routes/admin.js");
 const shopRouter = require("./routes/shop.js");
-
-
+const contRouter = require("./routes/contact.js");
 
 app.use('/admin', adminRouter);
 app.use(shopRouter);
+app.use(contRouter);
 
-app.use('/', (req, res, next)=>{
-  res.sendStatus(404);
+app.use((req, res, next)=>{
+  res.status(404).sendFile(path.join(__dirname, "views", "404.html"));
 })
 app.listen(PORT, () => {
   console.log("Server is running on " + PORT + ".");

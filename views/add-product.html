@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/public/add-product.css" />
+  </head>
+  <body>
+    <div>
+      <form action="/admin/add-product" method="POST">
+        <input
+          type="text"
+          name="title"
+          placeholder="enter product name"
+        /><input type="text" name="size" placeholder="enter size" /><button
+          type="submit"
+        >
+          Add Product
+        </button>
+      </form>
+    </div>
+  </body>
+</html>
